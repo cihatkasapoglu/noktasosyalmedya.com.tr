@@ -4,110 +4,206 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nokta Sosyal Medya | Dijital Ajans</title>
-<meta name="description" content="Nokta Sosyal Medya - Sosyal medya yönetimi, web tasarım, SEO ve dijital reklam hizmetleri sunan profesyonel dijital ajans.">
-
-<!-- SEO Schema -->
-<script type="application/ld+json">
-{
-"@context":"https://schema.org",
-"@type":"Organization",
-"name":"Nokta Sosyal Medya",
-"url":"https://noktasosyalmedya.com.tr",
-"sameAs":["https://instagram.com/noktasosyalmedya"],
-"contactPoint":{
-"@type":"ContactPoint",
-"telephone":"+905537383806",
-"contactType":"customer service",
-"areaServed":"TR"
-}
-}
-</script>
-
+<meta name="description" content="Nokta Sosyal Medya - Sosyal medya yönetimi, web tasarım, SEO ve dijital reklam hizmetleri.">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
-body{font-family:Poppins, sans-serif;margin:0;background:#040617;color:white;overflow-x:hidden}
+body{margin:0;font-family:Poppins, sans-serif;background:#f6f8fc;color:#1e293b}
 
 header{
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:22px 8%;
-background:rgba(0,0,0,.6);
-backdrop-filter:blur(10px);
+background:white;
+box-shadow:0 4px 20px rgba(0,0,0,.06);
 position:sticky;
 top:0;
 z-index:1000
 }
 
-header img{height:55px}
+header img{height:52px}
 
-nav a{margin-left:25px;text-decoration:none;color:white;font-weight:500;opacity:.9}
-nav a:hover{opacity:1}
+nav a{
+margin-left:28px;
+text-decoration:none;
+color:#1e293b;
+font-weight:500
+}
+
+nav a:hover{color:#2563eb}
 
 .hero{
-min-height:90vh;
-display:flex;
-align-items:center;
-padding:0 8%;
-background:radial-gradient(circle at 20% 20%,#2563eb,#020617 60%);
-animation:gradientMove 12s infinite alternate
+padding:140px 8%;
+background:linear-gradient(120deg,#2563eb,#4f46e5);
+color:white
 }
 
-@keyframes gradientMove{
-0%{background-position:0%}
-100%{background-position:100%}
+.hero-grid{
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:60px;
+align-items:center
 }
 
-.hero-inner{max-width:720px}
-.hero h1{font-size:60px;line-height:1.1;margin-bottom:20px}
-.hero p{font-size:20px;opacity:.9;margin-bottom:30px}
+.hero h1{
+font-size:56px;
+line-height:1.1;
+margin:0 0 20px
+}
 
-.hero-buttons a{margin-right:15px;text-decoration:none;padding:16px 32px;border-radius:10px;font-weight:600}
-.btn-primary{background:#2563eb;color:white}
-.btn-secondary{border:1px solid #334155;color:white}
+.hero p{
+font-size:20px;
+margin-bottom:30px
+}
+
+.btn{
+display:inline-block;
+padding:16px 32px;
+background:white;
+color:#2563eb;
+font-weight:600;
+border-radius:10px;
+text-decoration:none;
+margin-right:14px
+}
+
+.btn2{
+display:inline-block;
+padding:16px 32px;
+border:2px solid white;
+color:white;
+border-radius:10px;
+text-decoration:none
+}
+
+.hero-card{
+background:white;
+padding:40px;
+border-radius:16px;
+color:#1e293b;
+box-shadow:0 20px 50px rgba(0,0,0,.2)
+}
 
 section{padding:100px 8%}
-.section-title{font-size:38px;margin-bottom:50px}
 
-.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
-.card{background:#0f172a;padding:35px;border-radius:14px;transition:.3s}
-.card:hover{transform:translateY(-8px);background:#1e293b}
-
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;text-align:center}
-.stat{background:#0f172a;padding:35px;border-radius:12px}
-.stat h2{font-size:42px;margin:0 0 10px}
-
-.portfolio{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
-.project{background:#0f172a;padding:40px;border-radius:12px}
-
-.blog{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
-.article{background:#0f172a;padding:30px;border-radius:12px}
-
-.landing{
-background:linear-gradient(135deg,#1e3a8a,#020617);
+.section-title{
+font-size:38px;
+margin-bottom:60px;
 text-align:center
 }
 
-.landing h2{font-size:44px;margin-bottom:20px}
-.landing p{max-width:700px;margin:auto;margin-bottom:30px}
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px
+}
 
-.btn{display:inline-block;padding:16px 32px;background:#2563eb;color:white;text-decoration:none;border-radius:10px;font-weight:600}
+.card{
+background:white;
+padding:35px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+transition:.3s
+}
 
-footer{background:#020617;padding:60px 8%;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px}
-footer a{color:white;text-decoration:none;opacity:.8}
-footer a:hover{opacity:1}
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,.12)
+}
 
-.copyright{text-align:center;padding:25px;background:#01030a;font-size:14px}
+.card h3{margin-top:0}
 
-.whatsapp{position:fixed;bottom:25px;right:25px;background:#22c55e;color:white;padding:16px 22px;border-radius:50px;text-decoration:none;font-weight:600;box-shadow:0 10px 25px rgba(0,0,0,.4)}
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px
+}
 
-.fade{opacity:0;transform:translateY(40px);transition:1s}
-.fade.show{opacity:1;transform:none}
+.stat{
+background:white;
+padding:35px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,.07);
+text-align:center
+}
 
-@media(max-width:700px){
-.hero h1{font-size:38px}
+.stat h2{
+font-size:40px;
+color:#2563eb;
+margin:0
+}
+
+.portfolio{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px
+}
+
+.project{
+background:white;
+padding:35px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,.08)
+}
+
+.blog{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px
+}
+
+.article{
+background:white;
+padding:30px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,.08)
+}
+
+.cta{
+padding:120px 8%;
+background:linear-gradient(120deg,#4f46e5,#2563eb);
+text-align:center;
+color:white
+}
+
+.cta h2{font-size:42px;margin-bottom:20px}
+
+.cta a{
+background:white;
+color:#2563eb;
+padding:18px 36px;
+text-decoration:none;
+border-radius:10px;
+font-weight:600
+}
+
+footer{
+background:#0f172a;
+color:white;
+padding:70px 8%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:40px
+}
+
+.whatsapp{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#25d366;
+color:white;
+padding:16px 22px;
+border-radius:50px;
+text-decoration:none;
+font-weight:600;
+box-shadow:0 10px 25px rgba(0,0,0,.25)
+}
+
+@media(max-width:900px){
+.hero-grid{grid-template-columns:1fr}
+.hero h1{font-size:40px}
 }
 </style>
 </head>
@@ -126,82 +222,140 @@ footer a:hover{opacity:1}
 </header>
 
 <section class="hero">
-<div class="hero-inner">
-<h1>Dijitalde Büyüyen Markaların Tercihi</h1>
-<p>Nokta Sosyal Medya; sosyal medya yönetimi, web sitesi tasarımı, SEO ve dijital reklam hizmetleri ile işletmelerin internet dünyasında büyümesini sağlar.</p>
 
-<div class="hero-buttons">
-<a class="btn-primary" href="https://instagram.com/noktasosyalmedya">Instagram</a>
-<a class="btn-secondary" href="https://wa.me/905537383806">WhatsApp</a>
+<div class="hero-grid">
+
+<div>
+<h1>Markanızı Dijitalde Büyütelim</h1>
+<p>Nokta Sosyal Medya; sosyal medya yönetimi, web sitesi tasarımı, SEO ve dijital reklam hizmetleri ile işletmelerin dijital dünyada büyümesine yardımcı olur.</p>
+
+<a class="btn" href="https://instagram.com/noktasosyalmedya">Instagram</a>
+<a class="btn2" href="https://wa.me/905537383806">WhatsApp</a>
+</div>
+
+<div class="hero-card">
+<h3>Dijital Ajans Hizmetleri</h3>
+<p>• Sosyal Medya Yönetimi</p>
+<p>• Web Tasarım</p>
+<p>• SEO Çalışmaları</p>
+<p>• Google Ads</p>
+<p>• Instagram Reklamları</p>
 </div>
 
 </div>
+
 </section>
 
-<section class="fade">
-<h2 class="section-title">Neden Nokta Sosyal Medya?</h2>
+<section>
+<h2 class="section-title">Rakamlarla Nokta Sosyal Medya</h2>
+
 <div class="stats">
-<div class="stat"><h2>100+</h2><p>Yönetilen Sosyal Medya Hesabı</p></div>
-<div class="stat"><h2>50+</h2><p>Tamamlanan Web Sitesi</p></div>
+<div class="stat"><h2>100+</h2><p>Yönetilen Hesap</p></div>
+<div class="stat"><h2>50+</h2><p>Web Sitesi</p></div>
 <div class="stat"><h2>5M+</h2><p>Reklam Gösterimi</p></div>
-<div class="stat"><h2>10+</h2><p>Farklı Sektör Deneyimi</p></div>
+<div class="stat"><h2>10+</h2><p>Sektör Deneyimi</p></div>
 </div>
 </section>
 
-<section id="services" class="fade">
+<section id="services">
 <h2 class="section-title">Hizmetlerimiz</h2>
+
 <div class="services">
-<div class="card"><h3>Sosyal Medya Yönetimi</h3><p>Profesyonel içerik üretimi ve hesap yönetimi.</p></div>
-<div class="card"><h3>Web Sitesi Tasarımı</h3><p>Mobil uyumlu modern web siteleri.</p></div>
-<div class="card"><h3>SEO Hizmetleri</h3><p>Google'da üst sıralara çıkmanızı sağlıyoruz.</p></div>
-<div class="card"><h3>Google Ads</h3><p>Reklam kampanyaları ile müşteri kazanımı.</p></div>
-<div class="card"><h3>Meta Reklamları</h3><p>Instagram ve Facebook reklam yönetimi.</p></div>
-<div class="card"><h3>Kurumsal Kimlik</h3><p>Logo ve marka kimliği tasarımı.</p></div>
+
+<div class="card">
+<h3>Sosyal Medya Yönetimi</h3>
+<p>Instagram ve diğer platformlarda içerik üretimi ve hesap yönetimi.</p>
 </div>
+
+<div class="card">
+<h3>Web Sitesi Tasarımı</h3>
+<p>Modern ve mobil uyumlu profesyonel web siteleri.</p>
+</div>
+
+<div class="card">
+<h3>SEO Hizmetleri</h3>
+<p>Google aramalarında üst sıralara çıkmanız için SEO çalışmaları.</p>
+</div>
+
+<div class="card">
+<h3>Google Reklamları</h3>
+<p>Google Ads reklam yönetimi ile müşteri kazanımı.</p>
+</div>
+
+<div class="card">
+<h3>Instagram Reklamları</h3>
+<p>Meta reklam yönetimi ile marka büyütme.</p>
+</div>
+
+<div class="card">
+<h3>Kurumsal Kimlik</h3>
+<p>Logo ve marka tasarım çalışmaları.</p>
+</div>
+
+</div>
+
 </section>
 
-<section id="portfolio" class="fade">
+<section id="portfolio">
 <h2 class="section-title">Projelerimiz</h2>
+
 <div class="portfolio">
-<div class="project"><h3>Sosyal Medya Büyütme</h3><p>Markaların sosyal medya büyüme projeleri.</p></div>
-<div class="project"><h3>Kurumsal Web Siteleri</h3><p>Profesyonel web tasarımları.</p></div>
-<div class="project"><h3>Dijital Reklam</h3><p>Google ve sosyal medya reklam kampanyaları.</p></div>
+
+<div class="project">
+<h3>Sosyal Medya Projeleri</h3>
+<p>Birçok işletmenin sosyal medya hesaplarını büyüttük.</p>
 </div>
+
+<div class="project">
+<h3>Kurumsal Web Siteleri</h3>
+<p>Modern web tasarımları geliştirdik.</p>
+</div>
+
+<div class="project">
+<h3>Dijital Reklam</h3>
+<p>Reklam kampanyaları ile satışları artırdık.</p>
+</div>
+
+</div>
+
 </section>
 
-<section id="blog" class="fade">
+<section id="blog">
 <h2 class="section-title">Dijital Pazarlama Blogu</h2>
+
 <div class="blog">
-<div class="article"><h3>SEO Nedir?</h3><p>SEO ile web siteniz Google'da üst sıralara çıkar.</p></div>
-<div class="article"><h3>Sosyal Medya Neden Önemli?</h3><p>Doğru strateji ile müşteri kazanabilirsiniz.</p></div>
-<div class="article"><h3>Dijital Reklamların Gücü</h3><p>Reklamlar satışları hızla artırabilir.</p></div>
+
+<div class="article">
+<h3>SEO Nedir?</h3>
+<p>SEO ile web siteleri Google'da üst sıralara çıkar.</p>
 </div>
+
+<div class="article">
+<h3>Sosyal Medya Yönetimi</h3>
+<p>Doğru strateji ile marka büyütmek mümkündür.</p>
+</div>
+
+<div class="article">
+<h3>Dijital Reklam</h3>
+<p>Reklamlar müşteri kazanmanın en hızlı yoludur.</p>
+</div>
+
+</div>
+
 </section>
 
-<section class="landing">
-<h2>Markanızı Dijitalde Büyütmeye Hazır mısınız?</h2>
-<p>Web sitesi tasarımı, sosyal medya yönetimi ve dijital reklam hizmetleri ile markanızı büyütelim.</p>
-<a class="btn" href="https://wa.me/905537383806">WhatsApp ile İletişim</a>
-</section>
-
-<section id="contact">
-<h2 class="section-title">İletişim</h2>
-<p><b>Telefon:</b> 0553 738 38 06</p>
-<p><b>Instagram:</b> instagram.com/noktasosyalmedya</p>
+<section class="cta">
+<h2>Dijitalde Büyümek İster misiniz?</h2>
+<p>Web sitesi, sosyal medya ve reklam hizmetleri ile markanızı büyütelim.</p>
+<br>
+<a href="https://wa.me/905537383806">WhatsApp İletişim</a>
 </section>
 
 <footer>
-<div>
-<h3>Nokta Sosyal Medya</h3>
-<p>Dijital ajans hizmetleri ile markaların internet dünyasında büyümesini sağlıyoruz.</p>
-</div>
 
 <div>
-<h3>Hizmetler</h3>
-<p>Sosyal Medya Yönetimi</p>
-<p>Web Tasarım</p>
-<p>SEO Hizmetleri</p>
-<p>Dijital Reklam</p>
+<h3>Nokta Sosyal Medya</h3>
+<p>Dijital ajans hizmetleri.</p>
 </div>
 
 <div>
@@ -209,21 +363,10 @@ footer a:hover{opacity:1}
 <p>0553 738 38 06</p>
 <p>instagram.com/noktasosyalmedya</p>
 </div>
+
 </footer>
 
-<div class="copyright">© 2026 Nokta Sosyal Medya</div>
-
 <a class="whatsapp" href="https://wa.me/905537383806">WhatsApp</a>
-
-<script>
-const faders=document.querySelectorAll('.fade');
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){entry.target.classList.add('show');}
-});
-});
-faders.forEach(el=>observer.observe(el));
-</script>
 
 </body>
 </html>
