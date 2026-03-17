@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
@@ -10,18 +11,243 @@
   <meta property="og:description" content="Web Tasarım, SEO Altyapısı ve Dijital Kimlik Yönetimi ile markanızı dijitalde zirveye taşıyoruz." />
   <meta property="og:type" content="website" />
   <title>Nokta Sosyal Medya | Dijital Dünyada Noktayı Koyun</title>
-  <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:       #0a0a0c;
+      --bg2:      #0f0f14;
+      --bg3:      #141420;
+      --surface:  #16161f;
+      --border:   rgba(255,255,255,0.07);
+      --accent:   #00d4ff;
+      --accent2:  #0af5c8;
+      --text:     #e8e8f0;
+      --muted:    #7a7a9a;
+      --white:    #ffffff;
+      --fd:       'Bebas Neue', sans-serif;
+      --fb:       'DM Sans', sans-serif;
+      --ease:     0.35s cubic-bezier(.4,0,.2,1);
+      --r:        12px;
+      --rl:       20px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--fb); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+    ::selection { background: var(--accent); color: #000; }
+    .ac { color: var(--accent); }
+
+```
+/* BUTTONS */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 30px; background: var(--accent); color: #000;
+  font-family: var(--fb); font-weight: 600; font-size: .95rem;
+  border-radius: 6px; transition: var(--ease); position: relative; overflow: hidden;
+}
+.btn::before { content:''; position:absolute; inset:0; background:var(--accent2); transform:translateX(-100%); transition:transform .4s ease; z-index:0; }
+.btn:hover::before { transform:translateX(0); }
+.btn > * { position: relative; z-index: 1; }
+.btn svg { width:18px; height:18px; transition:transform .3s ease; }
+.btn:hover svg { transform:translateX(4px); }
+.btn:hover { box-shadow:0 0 30px rgba(0,212,255,.4); }
+.btn-ghost {
+  display:inline-flex; align-items:center; padding:14px 30px;
+  border:1px solid var(--border); color:var(--text);
+  font-family:var(--fb); font-weight:500; font-size:.95rem; border-radius:6px; transition:var(--ease);
+}
+.btn-ghost:hover { border-color:var(--accent); color:var(--accent); background:rgba(0,212,255,.05); }
+.btn-lg { padding:18px 44px; font-size:1.05rem; gap:12px; }
+.btn-lg svg { width:22px; height:22px; }
+
+/* SECTIONS */
+section { padding: 100px 0; }
+.wrap { max-width:1200px; margin:0 auto; padding:0 40px; }
+.lbl { font-size:.78rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; }
+.sub { max-width:540px; color:var(--muted); font-size:1rem; line-height:1.7; margin-top:16px; margin-bottom:60px; }
+section h2 { font-family:var(--fd); font-size:clamp(2.8rem,6vw,5rem); line-height:1; letter-spacing:.03em; color:var(--white); }
+
+/* REVEAL */
+[data-reveal] { opacity:0; transform:translateY(30px); transition:opacity .7s ease,transform .7s ease; }
+[data-reveal].on { opacity:1; transform:translateY(0); }
+
+/* ── NAVBAR ── */
+#nav { position:fixed; top:0; left:0; width:100%; z-index:1000; transition:background .4s,border-bottom .4s; }
+#nav.scrolled { background:rgba(10,10,12,.92); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
+#nav nav { max-width:1200px; margin:0 auto; padding:14px 40px; display:flex; align-items:center; gap:40px; }
+.nav-logo { height:42px; width:auto; flex-shrink:0; }
+.nav-links { display:flex; gap:32px; margin-left:auto; }
+.nav-links a { font-size:.9rem; font-weight:500; color:var(--muted); transition:color var(--ease); }
+.nav-links a:hover { color:var(--white); }
+.nav-cta { padding:10px 22px; background:var(--accent); color:#000; font-weight:600; font-size:.88rem; border-radius:5px; transition:var(--ease); white-space:nowrap; flex-shrink:0; }
+.nav-cta:hover { background:var(--accent2); box-shadow:0 0 20px rgba(0,212,255,.3); }
+.burger { display:none; flex-direction:column; gap:5px; padding:4px; margin-left:auto; }
+.burger span { display:block; width:24px; height:2px; background:var(--text); border-radius:2px; transition:var(--ease); }
+.burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity:0; }
+.burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+.mob { display:none; background:rgba(10,10,12,.97); backdrop-filter:blur(16px); border-top:1px solid var(--border); max-height:0; overflow:hidden; transition:max-height .4s ease,padding .3s ease; }
+.mob.open { max-height:500px; padding:24px 40px 32px; }
+.mob ul { display:flex; flex-direction:column; gap:20px; }
+.mob a { font-size:1rem; font-weight:500; color:var(--muted); transition:color var(--ease); }
+.mob a:hover { color:var(--white); }
+.mob-cta { display:inline-block; padding:12px 24px; background:var(--accent)!important; color:#000!important; font-weight:600!important; border-radius:5px; width:fit-content; }
+
+/* ── HERO ── */
+.grid-bg { position:fixed; inset:0; pointer-events:none; z-index:-1;
+  background-image:linear-gradient(rgba(0,212,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.03) 1px,transparent 1px);
+  background-size:60px 60px; }
+#hero { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; align-items:center; max-width:1200px; margin:0 auto; padding:110px 40px 60px; gap:60px; position:relative; }
+.hero-glow { position:absolute; top:50%; right:0; transform:translateY(-50%); width:600px; height:600px; background:radial-gradient(circle,rgba(0,212,255,.12) 0%,transparent 70%); pointer-events:none; z-index:0; }
+.hero-c { position:relative; z-index:1; }
+.eyebrow { font-size:.78rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+.eyebrow::before { content:''; display:block; width:30px; height:2px; background:var(--accent); border-radius:1px; }
+#hero h1 { font-family:var(--fd); font-size:clamp(3.5rem,7vw,6.5rem); line-height:.95; letter-spacing:.02em; color:var(--white); margin-bottom:24px; }
+.hero-sub { font-size:1.05rem; color:var(--muted); line-height:1.75; max-width:460px; margin-bottom:40px; }
+.hero-act { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:56px; }
+.stats { display:flex; align-items:center; gap:24px; }
+.stat { display:flex; flex-direction:column; }
+.stat strong { font-family:var(--fd); font-size:2rem; color:var(--white); line-height:1; }
+.stat span { font-size:.78rem; color:var(--muted); margin-top:4px; }
+.sdiv { width:1px; height:36px; background:var(--border); flex-shrink:0; }
+.hero-v { position:relative; z-index:1; display:flex; justify-content:center; }
+.vframe { position:relative; width:100%; max-width:460px; }
+.vph { aspect-ratio:4/3; background:var(--surface); border:1px solid var(--border); border-radius:var(--rl); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.vpi { display:flex; flex-direction:column; align-items:center; gap:12px; color:var(--muted); }
+.vpdot { width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 16px var(--accent); animation:pulse 2s infinite; }
+.vpi p { font-size:.85rem; letter-spacing:.05em; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+.fa { position:absolute; width:40px; height:40px; border-color:var(--accent); border-style:solid; opacity:.6; }
+.fa.tl { top:-12px; left:-12px; border-width:2px 0 0 2px; border-radius:4px 0 0 0; }
+.fa.br { bottom:-12px; right:-12px; border-width:0 2px 2px 0; border-radius:0 0 4px 0; }
+
+/* ── HİZMETLER ── */
+#hizmetler { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+#hizmetler h2 { margin-bottom:0; }
+.sgrid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:60px; }
+.sc { background:var(--surface); border:1px solid var(--border); border-radius:var(--rl); padding:36px 32px; position:relative; overflow:hidden; transition:border-color var(--ease),transform var(--ease); }
+.sc:hover { border-color:rgba(0,212,255,.3); transform:translateY(-4px); }
+.sc.feat { border-color:rgba(0,212,255,.25); background:linear-gradient(135deg,var(--surface) 0%,rgba(0,212,255,.04) 100%); }
+.sc.feat:hover { border-color:rgba(0,212,255,.5); }
+.fbadge { position:absolute; top:20px; right:20px; background:var(--accent); color:#000; font-size:.72rem; font-weight:700; letter-spacing:.06em; padding:4px 10px; border-radius:20px; }
+.sico { width:52px; height:52px; margin-bottom:24px; color:var(--accent); }
+.sico svg { width:100%; height:100%; }
+.sc h3 { font-family:var(--fd); font-size:1.6rem; letter-spacing:.04em; color:var(--white); margin-bottom:12px; }
+.sc p { color:var(--muted); font-size:.92rem; line-height:1.7; margin-bottom:24px; }
+.sfl { display:flex; flex-direction:column; gap:8px; }
+.sfl li { font-size:.85rem; color:var(--text); display:flex; align-items:center; gap:8px; }
+.sfl li::before { content:''; display:block; width:6px; height:6px; border-radius:50%; background:var(--accent); flex-shrink:0; }
+.cg { position:absolute; bottom:-60px; right:-60px; width:180px; height:180px; background:radial-gradient(circle,rgba(0,212,255,.06) 0%,transparent 70%); pointer-events:none; }
+.cg.f { width:240px; height:240px; bottom:-80px; right:-80px; background:radial-gradient(circle,rgba(0,212,255,.12) 0%,transparent 70%); }
+
+/* ── AVANTAJLAR ── */
+#avantajlar { background:var(--bg); }
+.av-g { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.av-g h2 { margin-bottom:0; }
+.avl { display:flex; flex-direction:column; gap:32px; margin-top:48px; }
+.avi { display:flex; gap:20px; align-items:flex-start; }
+.avico { width:44px; height:44px; flex-shrink:0; background:rgba(0,212,255,.08); border:1px solid rgba(0,212,255,.2); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--accent); margin-top:2px; }
+.avico svg { width:20px; height:20px; }
+.avi h3 { font-family:var(--fd); font-size:1.2rem; letter-spacing:.04em; color:var(--white); margin-bottom:6px; }
+.avi p { font-size:.9rem; color:var(--muted); line-height:1.65; }
+.av-vis { position:relative; display:flex; justify-content:center; }
+.avph { width:100%; aspect-ratio:3/4; background:var(--surface); border:1px solid var(--border); border-radius:var(--rl); display:flex; align-items:center; justify-content:center; }
+.avb { position:absolute; background:var(--bg3); border:1px solid var(--border); border-radius:40px; padding:10px 18px; font-size:.82rem; font-weight:600; color:var(--text); display:flex; align-items:center; gap:8px; backdrop-filter:blur(8px); box-shadow:0 8px 32px rgba(0,0,0,.4); }
+.avb svg { width:16px; height:16px; color:var(--accent); }
+.avb1 { top:40px; left:-20px; animation:fb 4s ease-in-out infinite; }
+.avb2 { bottom:60px; right:-20px; animation:fb 4s ease-in-out infinite 2s; }
+@keyframes fb { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+/* ── PORTFOLYO ── */
+#portfolyo { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+#portfolyo h2 { margin-bottom:0; }
+.pgrid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:60px; }
+.pc { border-radius:var(--r); overflow:hidden; }
+.pc.lg { grid-column:span 2; grid-row:span 2; }
+.pc.wd { grid-column:span 2; }
+.pimg { position:relative; height:100%; min-height:220px; cursor:pointer; overflow:hidden; background:var(--surface); }
+.pc.lg .pimg { min-height:460px; }
+.pph { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--surface),var(--bg3)); transition:transform .5s ease; }
+.pph span { font-size:.8rem; color:var(--muted); letter-spacing:.05em; }
+.pimg:hover .pph { transform:scale(1.04); }
+.pov { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 50%); display:flex; flex-direction:column; justify-content:flex-end; padding:28px; opacity:0; transition:opacity .35s ease; }
+.pimg:hover .pov { opacity:1; }
+.ptag { font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+.pov h3 { font-family:var(--fd); font-size:1.4rem; letter-spacing:.04em; color:var(--white); margin-bottom:4px; }
+.pov p { font-size:.85rem; color:rgba(255,255,255,.6); }
+.pcta { text-align:center; margin-top:48px; }
+
+/* ── İLETİŞİM ── */
+#iletisim { background:var(--bg); padding:120px 0; text-align:center; position:relative; overflow:hidden; }
+.iw { max-width:700px; margin:0 auto; padding:0 40px; position:relative; z-index:1; }
+.iglow { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:700px; height:400px; background:radial-gradient(ellipse,rgba(0,212,255,.1) 0%,transparent 70%); pointer-events:none; }
+#iletisim .lbl { justify-content:center; display:flex; }
+.isub { color:var(--muted); font-size:1rem; line-height:1.75; margin:20px auto 40px; max-width:480px; }
+.ihandle { margin-top:16px; font-size:.9rem; color:var(--muted); letter-spacing:.06em; }
+
+/* ── FOOTER ── */
+footer { background:var(--bg2); border-top:1px solid var(--border); padding:48px 0; }
+.fi { max-width:1200px; margin:0 auto; padding:0 40px; display:flex; flex-direction:column; align-items:center; gap:20px; text-align:center; }
+.flogo { height:34px; width:auto; }
+.ftag { font-size:.85rem; color:var(--muted); }
+.flinks { display:flex; gap:32px; flex-wrap:wrap; justify-content:center; }
+.flinks a { font-size:.88rem; color:var(--muted); transition:color var(--ease); }
+.flinks a:hover { color:var(--accent); }
+.fcopy { font-size:.78rem; color:rgba(122,122,154,.6); margin-top:8px; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .sgrid { grid-template-columns:1fr 1fr; }
+  .sc:last-child { grid-column:span 2; }
+  .av-g { grid-template-columns:1fr; gap:60px; }
+  .av-vis { display:none; }
+  .pgrid { grid-template-columns:repeat(2,1fr); }
+  .pc.lg,.pc.wd { grid-column:span 2; }
+}
+@media(max-width:768px){
+  section { padding:72px 0; }
+  .wrap { padding:0 24px; }
+  .nav-links,.nav-cta { display:none; }
+  .burger { display:flex; }
+  #nav nav { padding:14px 24px; }
+  .mob { display:block; }
+  #hero { grid-template-columns:1fr; padding:110px 24px 60px; gap:48px; }
+  .hero-v { display:none; }
+  #hero h1 { font-size:clamp(3rem,12vw,4.5rem); }
+  .stats { flex-wrap:wrap; gap:20px; }
+  .sdiv { display:none; }
+  .sgrid { grid-template-columns:1fr; }
+  .sc:last-child { grid-column:span 1; }
+  .pgrid { grid-template-columns:1fr; }
+  .pc.lg,.pc.wd { grid-column:span 1; }
+  .pc.lg .pimg { min-height:280px; }
+  section h2 { font-size:clamp(2.4rem,9vw,3.5rem); }
+  .iw,.fi { padding:0 24px; }
+}
+@media(max-width:480px){
+  .hero-act { flex-direction:column; align-items:flex-start; }
+  .btn,.btn-ghost { width:100%; justify-content:center; }
+}
+```
+
+  </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <header id="navbar">
+
+  <header id="nav">
     <nav aria-label="Ana navigasyon">
-      <a href="#" class="logo" aria-label="Nokta Sosyal Medya Ana Sayfa">
-        NOKTA<span class="dot">.</span>
+      <a href="#" aria-label="Nokta Sosyal Medya Ana Sayfa">
+        <img src="nokta-sosyal-medya.png" alt="Nokta Sosyal Medya" class="nav-logo" />
       </a>
       <ul class="nav-links" role="list">
         <li><a href="#hizmetler">Hizmetler</a></li>
@@ -30,298 +256,314 @@
         <li><a href="#iletisim">İletişim</a></li>
       </ul>
       <a href="https://www.instagram.com/noktasosyalmedya/" target="_blank" rel="noopener noreferrer" class="nav-cta">Teklif Al</a>
-      <button class="menu-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false">
+      <button class="burger" aria-label="Menüyü aç/kapat" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </nav>
-    <div class="mobile-menu" aria-hidden="true">
+    <div class="mob" aria-hidden="true">
       <ul role="list">
         <li><a href="#hizmetler">Hizmetler</a></li>
         <li><a href="#avantajlar">Avantajlar</a></li>
         <li><a href="#portfolyo">Portföy</a></li>
         <li><a href="#iletisim">İletişim</a></li>
-        <li><a href="https://www.instagram.com/noktasosyalmedya/" target="_blank" rel="noopener noreferrer" class="mobile-cta">Teklif Al</a></li>
+        <li><a href="https://www.instagram.com/noktasosyalmedya/" target="_blank" rel="noopener noreferrer" class="mob-cta">Teklif Al</a></li>
       </ul>
     </div>
   </header>
 
   <main>
 
-    <!-- HERO -->
-    <section id="hero" aria-labelledby="hero-heading">
-      <div class="hero-grid-overlay" aria-hidden="true"></div>
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="hero-content">
-        <p class="hero-eyebrow" data-reveal>Dijital Ajans</p>
-        <h1 id="hero-heading" data-reveal>
-          Dijital Dünyada<br />
-          <span class="accent-text">Noktayı</span> Koyun<span class="dot-big">.</span>
-        </h1>
-        <p class="hero-sub" data-reveal>
-          Web tasarımdan SEO altyapısına, dijital kimlik yönetiminden kurumsal çözümlere kadar markanızı dijitalde zirveye taşıyoruz.
-        </p>
-        <div class="hero-actions" data-reveal>
-          <a href="https://www.instagram.com/noktasosyalmedya/" target="_blank" rel="noopener noreferrer" class="btn-primary">
-            Teklif Al
-            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#hizmetler" class="btn-ghost">Hizmetlerimiz</a>
-        </div>
-        <div class="hero-stats" data-reveal>
-          <div class="stat"><strong>50+</strong><span>Proje Tamamlandı</span></div>
-          <div class="stat-divider" aria-hidden="true"></div>
-          <div class="stat"><strong>%100</strong><span>Müşteri Memnuniyeti</span></div>
-          <div class="stat-divider" aria-hidden="true"></div>
-          <div class="stat"><strong>3x</strong><span>Daha Hızlı Sonuç</span></div>
-        </div>
-      </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="visual-frame">
-          <div class="visual-placeholder">
-            <div class="vp-inner">
-              <div class="vp-dot"></div>
-              <p>Hero Görseli</p>
-            </div>
-          </div>
-          <div class="frame-accent top-left"></div>
-          <div class="frame-accent bottom-right"></div>
-        </div>
-      </div>
-    </section>
+```
+<!-- HERO -->
+<section id="hero" aria-labelledby="hero-h">
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-c">
+    <p class="eyebrow" data-reveal>Dijital Ajans</p>
+    <h1 id="hero-h" data-reveal>Dijital Dünyada<br /><span class="ac">Noktayı</span> Koyun.</h1>
+    <p class="hero-sub" data-reveal>Web tasarımdan SEO altyapısına, dijital kimlik yönetiminden kurumsal çözümlere kadar markanızı dijitalde zirveye taşıyoruz.</p>
+    <div class="hero-act" data-reveal>
+      <a href="https://www.instagram.com/noktasosyalmedya/" target="_blank" rel="noopener noreferrer" class="btn">
+        Teklif Al
+        <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#hizmetler" class="btn-ghost">Hizmetlerimiz</a>
+    </div>
+    <div class="stats" data-reveal>
+      <div class="stat"><strong>50+</strong><span>Proje Tamamlandı</span></div>
+      <div class="sdiv" aria-hidden="true"></div>
+      <div class="stat"><strong>100</strong><span>% Müşteri Memnuniyeti</span></div>
+      <div class="sdiv" aria-hidden="true"></div>
+      <div class="stat"><strong>3</strong><span>x Daha Hızlı Sonuç</span></div>
+    </div>
+  </div>
+  <div class="hero-v" aria-hidden="true">
+    <div class="vframe">
+      <div class="vph"><div class="vpi"><div class="vpdot"></div><p>Hero Görseli</p></div></div>
+      <div class="fa tl"></div>
+      <div class="fa br"></div>
+    </div>
+  </div>
+</section>
 
-    <!-- HİZMETLER -->
-    <section id="hizmetler" aria-labelledby="hizmetler-heading">
-      <div class="section-container">
-        <div class="section-label" data-reveal>Hizmetlerimiz</div>
-        <h2 id="hizmetler-heading" data-reveal>Nokta Atışı<br /><span class="accent-text">Çözümler</span></h2>
-        <p class="section-sub" data-reveal>Her hizmetimiz, işinizi büyütmek için özelleştirilmiş ve sonuç odaklı yaklaşımla tasarlanmıştır.</p>
+<!-- HİZMETLER -->
+<section id="hizmetler" aria-labelledby="hiz-h">
+  <div class="wrap">
+    <div class="lbl" data-reveal>Hizmetlerimiz</div>
+    <h2 id="hiz-h" data-reveal>Nokta Atışı<br /><span class="ac">Çözümler</span></h2>
+    <p class="sub" data-reveal>Her hizmetimiz, işinizi büyütmek için özelleştirilmiş ve sonuç odaklı yaklaşımla tasarlanmıştır.</p>
+    <div class="sgrid">
 
-        <div class="services-grid">
+      <article class="sc" data-reveal>
+        <div class="sico"><svg viewBox="0 0 48 48" fill="none"><rect x="4" y="8" width="40" height="28" rx="3" stroke="currentColor" stroke-width="2"/><path d="M16 40h16M24 36v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 28h40" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="18" r="2" fill="currentColor"/></svg></div>
+        <h3>Web Tasarım</h3>
+        <p>Markanızın kimliğini yansıtan, mobil uyumlu ve yüksek dönüşüm oranına sahip modern web siteleri tasarlıyoruz.</p>
+        <ul class="sfl"><li>Mobil Öncelikli Tasarım</li><li>Hızlı Yükleme Süresi</li><li>Özelleştirilmiş UI/UX</li></ul>
+        <div class="cg"></div>
+      </article>
 
-          <article class="service-card" data-reveal>
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none"><rect x="4" y="8" width="40" height="28" rx="3" stroke="currentColor" stroke-width="2"/><path d="M16 40h16M24 36v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 28h40" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="18" r="2" fill="currentColor"/></svg>
-            </div>
-            <h3>Web Tasarım</h3>
-            <p>Markanızın kimliğini yansıtan, mobil uyumlu ve yüksek dönüşüm oranına sahip modern web siteleri tasarlıyoruz.</p>
-            <ul class="service-features" role="list">
-              <li>Mobil Öncelikli Tasarım</li>
-              <li>Hızlı Yükleme Süresi</li>
-              <li>Özelleştirilmiş UI/UX</li>
-            </ul>
-            <div class="card-glow" aria-hidden="true"></div>
-          </article>
+      <article class="sc feat" data-reveal>
+        <div class="fbadge">En Popüler</div>
+        <div class="sico"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2"/><path d="M24 6v4M24 38v4M6 24h4M38 24h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 14l2.8 2.8M31.2 31.2L34 34M34 14l-2.8 2.8M16.8 31.2L14 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="5" fill="currentColor" opacity=".3"/><circle cx="24" cy="24" r="2.5" fill="currentColor"/></svg></div>
+        <h3>SEO Altyapısı</h3>
+        <p>Arama motorlarında üst sıralara çıkmanızı sağlayan teknik SEO, içerik optimizasyonu ve performans iyileştirmeleri.</p>
+        <ul class="sfl"><li>Teknik SEO Analizi</li><li>Anahtar Kelime Stratejisi</li><li>Core Web Vitals Optimizasyonu</li></ul>
+        <div class="cg f"></div>
+      </article>
 
-          <article class="service-card featured" data-reveal>
-            <div class="featured-badge">En Popüler</div>
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2"/><path d="M24 6v4M24 38v4M6 24h4M38 24h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 14l2.8 2.8M31.2 31.2L34 34M34 14l-2.8 2.8M16.8 31.2L14 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="5" fill="currentColor" opacity=".3"/><circle cx="24" cy="24" r="2.5" fill="currentColor"/></svg>
-            </div>
-            <h3>SEO Altyapısı</h3>
-            <p>Arama motorlarında üst sıralara çıkmanızı sağlayan teknik SEO, içerik optimizasyonu ve performans iyileştirmeleri.</p>
-            <ul class="service-features" role="list">
-              <li>Teknik SEO Analizi</li>
-              <li>Anahtar Kelime Stratejisi</li>
-              <li>Core Web Vitals Optimizasyonu</li>
-            </ul>
-            <div class="card-glow featured-glow" aria-hidden="true"></div>
-          </article>
+      <article class="sc" data-reveal>
+        <div class="sico"><svg viewBox="0 0 48 48" fill="none"><path d="M24 4C13 4 4 13 4 24s9 20 20 20 20-9 20-20S35 4 24 4Z" stroke="currentColor" stroke-width="2"/><path d="M24 4c-4 0-8 8.95-8 20s4 20 8 20 8-8.95 8-20-4-20-8-20Z" stroke="currentColor" stroke-width="1.5"/><path d="M4 24h40" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <h3>Dijital Kimlik Yönetimi</h3>
+        <p>Markanızın dijital varlığını bütüncül bir stratejiyle yönetiyor, tutarlı ve güçlü bir imaj oluşturuyoruz.</p>
+        <ul class="sfl"><li>Sosyal Medya Yönetimi</li><li>Marka Kimliği Tasarımı</li><li>İçerik Stratejisi</li></ul>
+        <div class="cg"></div>
+      </article>
 
-          <article class="service-card" data-reveal>
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none"><path d="M24 4C13 4 4 13 4 24s9 20 20 20 20-9 20-20S35 4 24 4Z" stroke="currentColor" stroke-width="2"/><path d="M24 4c-4 0-8 8.95-8 20s4 20 8 20 8-8.95 8-20-4-20-8-20Z" stroke="currentColor" stroke-width="1.5"/><path d="M4 24h40" stroke="currentColor" stroke-width="1.5"/><path d="M7 14h34M7 34h34" stroke="currentColor" stroke-width="1" stroke-dasharray="3 2"/></svg>
-            </div>
-            <h3>Dijital Kimlik Yönetimi</h3>
-            <p>Markanızın dijital varlığını bütüncül bir stratejiyle yönetiyor, tutarlı ve güçlü bir imaj oluşturuyoruz.</p>
-            <ul class="service-features" role="list">
-              <li>Sosyal Medya Yönetimi</li>
-              <li>Marka Kimliği Tasarımı</li>
-              <li>İçerik Stratejisi</li>
-            </ul>
-            <div class="card-glow" aria-hidden="true"></div>
-          </article>
+    </div>
+  </div>
+</section>
 
-        </div>
-      </div>
-    </section>
+<!-- AVANTAJLAR -->
+<section id="avantajlar" aria-labelledby="av-h">
+  <div class="wrap av-g">
+    <div>
+      <div class="lbl" data-reveal>Neden Biz?</div>
+      <h2 id="av-h" data-reveal>Rakiplerimizden<br /><span class="ac">Farkımız</span></h2>
+      <p class="sub" data-reveal>İşletmenize değer katan somut avantajlar sunuyoruz.</p>
+      <div class="avl">
 
-    <!-- AVANTAJLAR -->
-    <section id="avantajlar" aria-labelledby="avantajlar-heading">
-      <div class="section-container avantaj-inner">
-        <div class="avantaj-text">
-          <div class="section-label" data-reveal>Neden Biz?</div>
-          <h2 id="avantajlar-heading" data-reveal>Rakiplerimizden<br /><span class="accent-text">Farkımız</span></h2>
-          <p class="section-sub" data-reveal>İşletmenize değer katan somut avantajlar sunuyoruz.</p>
-
-          <div class="avantaj-list">
-
-            <div class="avantaj-item" data-reveal>
-              <div class="avantaj-icon" aria-hidden="true">
-                <svg viewBox="0 0 32 32" fill="none"><path d="M4 16C4 9.37 9.37 4 16 4s12 5.37 12 12-5.37 12-12 12S4 22.63 4 16Z" stroke="currentColor" stroke-width="1.8"/><path d="M10 16l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div>
-                <h3>Sıfır Hosting Maliyeti</h3>
-                <p>Modern JAMstack teknolojisi ile sitenizi ekstra hosting gideri olmadan yayına alıyoruz. Yıllık tasarrufunuz cebinizde kalır.</p>
-              </div>
-            </div>
-
-            <div class="avantaj-item" data-reveal>
-              <div class="avantaj-icon" aria-hidden="true">
-                <svg viewBox="0 0 32 32" fill="none"><path d="M16 4l2.5 7.5H26l-6.5 4.7 2.5 7.5L16 19l-6 4.7 2.5-7.5L6 11.5h7.5L16 4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-              </div>
-              <div>
-                <h3>%100 Güvenli Altyapı</h3>
-                <p>SSL sertifikası, DDoS koruması ve otomatik yedekleme ile siteniz 7/24 güvende. Verileriniz hiçbir zaman risk altında değil.</p>
-              </div>
-            </div>
-
-            <div class="avantaj-item" data-reveal>
-              <div class="avantaj-icon" aria-hidden="true">
-                <svg viewBox="0 0 32 32" fill="none"><path d="M6 16a10 10 0 1 0 20 0A10 10 0 0 0 6 16Z" stroke="currentColor" stroke-width="1.8"/><path d="M16 10v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div>
-                <h3>Hızlı Teslimat</h3>
-                <p>Ortalama 7-14 gün içinde canlıya alınan projelerinizle rakiplerinizden önce dijitalde yerinizi alırsınız.</p>
-              </div>
-            </div>
-
-            <div class="avantaj-item" data-reveal>
-              <div class="avantaj-icon" aria-hidden="true">
-                <svg viewBox="0 0 32 32" fill="none"><path d="M8 8h16v12H8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 20v4M20 20v4M9 24h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-              </div>
-              <div>
-                <h3>Tam Kaynak Kodu Sahipliği</h3>
-                <p>Sitenizin tüm kaynak kodları size ait. Bağımsızlığınızdan asla taviz vermiyoruz.</p>
-              </div>
-            </div>
-
+        <div class="avi" data-reveal>
+          <div class="avico"><svg viewBox="0 0 32 32" fill="none"><path d="M4 16C4 9.37 9.37 4 16 4s12 5.37 12 12-5.37 12-12 12S4 22.63 4 16Z" stroke="currentColor" stroke-width="1.8"/><path d="M10 16l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div>
+            <h3>Sıfır Hosting Maliyeti</h3>
+            <p>Modern JAMstack teknolojisi ile sitenizi ekstra hosting gideri olmadan yayına alıyoruz. Yıllık tasarrufunuz cebinizde kalır.</p>
           </div>
         </div>
 
-        <div class="avantaj-visual" aria-hidden="true" data-reveal>
-          <div class="av-placeholder">
-            <div class="vp-inner">
-              <div class="vp-dot"></div>
-              <p>Avantaj Görseli</p>
-            </div>
-          </div>
-          <div class="av-badge av-badge-1">
-            <svg viewBox="0 0 20 20" fill="none"><path d="M10 2l2 6h6l-5 3.6 2 6L10 14l-5 3.6 2-6L2 8h6L10 2Z" fill="currentColor"/></svg>
-            Sıfır Maliyet
-          </div>
-          <div class="av-badge av-badge-2">
-            <svg viewBox="0 0 20 20" fill="none"><path d="M10 2a8 8 0 1 0 0 16A8 8 0 0 0 10 2Zm-1 11.4L5 9.8l1.4-1.4 2.6 2.6 5.6-5.6L16 6.8l-7 7.6Z" fill="currentColor"/></svg>
-            SSL Güvencesi
+        <div class="avi" data-reveal>
+          <div class="avico"><svg viewBox="0 0 32 32" fill="none"><path d="M16 3L6 8v8c0 5.5 4.3 10.7 10 12 5.7-1.3 10-6.5 10-12V8L16 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M11 16l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div>
+            <h3>%100 Güvenli Altyapı</h3>
+            <p>SSL sertifikası, DDoS koruması ve otomatik yedekleme ile siteniz 7/24 güvende. Verileriniz hiçbir zaman risk altında değil.</p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- PORTFOLYO -->
-    <section id="portfolyo" aria-labelledby="portfolyo-heading">
-      <div class="section-container">
-        <div class="section-label" data-reveal>Çalışmalarımız</div>
-        <h2 id="portfolyo-heading" data-reveal>Seçilen<br /><span class="accent-text">Projeler</span></h2>
-        <p class="section-sub" data-reveal>Her proje, özgün bir tasarım anlayışı ve ölçülebilir sonuçlarla hayata geçirildi.</p>
-
-        <div class="portfolio-grid">
-          <article class="portfolio-card large" data-reveal>
-            <div class="portfolio-img">
-              <div class="port-placeholder"><span>Proje Görseli 1</span></div>
-              <div class="portfolio-overlay">
-                <span class="port-tag">Web Tasarım</span>
-                <h3>Kurumsal E-Ticaret Sitesi</h3>
-                <p>Dönüşüm odaklı alışveriş deneyimi</p>
-              </div>
-            </div>
-          </article>
-          <article class="portfolio-card" data-reveal>
-            <div class="portfolio-img">
-              <div class="port-placeholder"><span>Proje Görseli 2</span></div>
-              <div class="portfolio-overlay">
-                <span class="port-tag">SEO</span>
-                <h3>Sağlık Sektörü</h3>
-                <p>6 ayda organik trafiği 4x artırdık</p>
-              </div>
-            </div>
-          </article>
-          <article class="portfolio-card" data-reveal>
-            <div class="portfolio-img">
-              <div class="port-placeholder"><span>Proje Görseli 3</span></div>
-              <div class="portfolio-overlay">
-                <span class="port-tag">Dijital Kimlik</span>
-                <h3>Restoran Zinciri</h3>
-                <p>Çok şubeli marka yönetimi</p>
-              </div>
-            </div>
-          </article>
-          <article class="portfolio-card" data-reveal>
-            <div class="portfolio-img">
-              <div class="port-placeholder"><span>Proje Görseli 4</span></div>
-              <div class="portfolio-overlay">
-                <span class="port-tag">Web Tasarım</span>
-                <h3>Hukuk Bürosu</h3>
-                <p>Güven veren kurumsal kimlik</p>
-              </div>
-            </div>
-          </article>
-          <article class="portfolio-card wide" data-reveal>
-            <div class="portfolio-img">
-              <div class="port-placeholder"><span>Proje Görseli 5</span></div>
-              <div class="portfolio-overlay">
-                <span class="port-tag">Full Paket</span>
-                <h3>Teknoloji Startup'ı</h3>
-                <p>Sıfırdan dijital varlık inşası</p>
-              </div>
-            </div>
-          </article>
+        <div class="avi" data-reveal>
+          <div class="avico"><svg viewBox="0 0 32 32" fill="none"><path d="M6 16a10 10 0 1 0 20 0A10 10 0 0 0 6 16Z" stroke="currentColor" stroke-width="1.8"/><path d="M16 10v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div>
+            <h3>Hızlı Teslimat</h3>
+            <p>Ortalama 7-14 gün içinde canlıya alınan projelerinizle rakiplerinizden önce dijitalde yerinizi alırsınız.</p>
+          </div>
         </div>
 
-        <div class="portfolio-cta" data-reveal>
-          <a href="https://www.instagram.com/noktasosyalmedya/" target="_blank" rel="noopener noreferrer" class="btn-primary">
-            Tüm Projeleri Gör
-            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+        <div class="avi" data-reveal>
+          <div class="avico"><svg viewBox="0 0 32 32" fill="none"><rect x="6" y="6" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M11 22v4M21 22v4M8 26h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <div>
+            <h3>Tam Kaynak Kodu Sahipliği</h3>
+            <p>Sitenizin tüm kaynak kodları size ait. Bağımsızlığınızdan asla taviz vermiyoruz.</p>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- İLETİŞİM -->
-    <section id="iletisim" aria-labelledby="iletisim-heading">
-      <div class="iletisim-inner">
-        <div class="iletisim-glow" aria-hidden="true"></div>
-        <div class="section-label" data-reveal>İletişim</div>
-        <h2 id="iletisim-heading" data-reveal>Projenizi<br /><span class="accent-text">Konuşalım</span></h2>
-        <p class="iletisim-sub" data-reveal>
-          Markanız için doğru dijital stratejiyi birlikte belirleyelim. Instagram üzerinden bize ulaşın, ücretsiz danışmanlık için DM atın.
-        </p>
-        <a href="https://www.instagram.com/noktasosyalmedya/" target="_blank" rel="noopener noreferrer" class="btn-primary btn-large" data-reveal>
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-          Instagram'dan Ulaşın
-        </a>
-        <p class="iletisim-handle" data-reveal>@noktasosyalmedya</p>
       </div>
-    </section>
+    </div>
+
+    <div class="av-vis" aria-hidden="true" data-reveal>
+      <div class="avph"><div class="vpi"><div class="vpdot"></div><p>Avantaj Görseli</p></div></div>
+      <div class="avb avb1"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2l2 6h6l-5 3.6 2 6L10 14l-5 3.6 2-6L2 8h6L10 2Z" fill="currentColor"/></svg>Sıfır Maliyet</div>
+      <div class="avb avb2"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2a8 8 0 1 0 0 16A8 8 0 0 0 10 2Zm-1 11.4L5 9.8l1.4-1.4 2.6 2.6 5.6-5.6L16 6.8l-7 7.6Z" fill="currentColor"/></svg>SSL Güvencesi</div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLYO -->
+<section id="portfolyo" aria-labelledby="port-h">
+  <div class="wrap">
+    <div class="lbl" data-reveal>Çalışmalarımız</div>
+    <h2 id="port-h" data-reveal>Seçilen<br /><span class="ac">Projeler</span></h2>
+    <p class="sub" data-reveal>Her proje, özgün bir tasarım anlayışı ve ölçülebilir sonuçlarla hayata geçirildi.</p>
+    <div class="pgrid">
+      <article class="pc lg" data-reveal>
+        <div class="pimg"><div class="pph"><span>Proje Görseli 1</span></div><div class="pov"><span class="ptag">Web Tasarım</span><h3>Kurumsal E-Ticaret Sitesi</h3><p>Dönüşüm odaklı alışveriş deneyimi</p></div></div>
+      </article>
+      <article class="pc" data-reveal>
+        <div class="pimg"><div class="pph"><span>Proje Görseli 2</span></div><div class="pov"><span class="ptag">SEO</span><h3>Sağlık Sektörü</h3><p>6 ayda organik trafiği 4x artırdık</p></div></div>
+      </article>
+      <article class="pc" data-reveal>
+        <div class="pimg"><div class="pph"><span>Proje Görseli 3</span></div><div class="pov"><span class="ptag">Dijital Kimlik</span><h3>Restoran Zinciri</h3><p>Çok şubeli marka yönetimi</p></div></div>
+      </article>
+      <article class="pc" data-reveal>
+        <div class="pimg"><div class="pph"><span>Proje Görseli 4</span></div><div class="pov"><span class="ptag">Web Tasarım</span><h3>Hukuk Bürosu</h3><p>Güven veren kurumsal kimlik</p></div></div>
+      </article>
+      <article class="pc wd" data-reveal>
+        <div class="pimg"><div class="pph"><span>Proje Görseli 5</span></div><div class="pov"><span class="ptag">Full Paket</span><h3>Teknoloji Startup'ı</h3><p>Sıfırdan dijital varlık inşası</p></div></div>
+      </article>
+    </div>
+    <div class="pcta" data-reveal>
+      <a href="https://www.instagram.com/noktasosyalmedya/" target="_blank" rel="noopener noreferrer" class="btn">
+        Tüm Projeleri Gör
+        <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- İLETİŞİM -->
+<section id="iletisim" aria-labelledby="il-h">
+  <div class="iw">
+    <div class="iglow" aria-hidden="true"></div>
+    <div class="lbl" data-reveal>İletişim</div>
+    <h2 id="il-h" data-reveal>Projenizi<br /><span class="ac">Konuşalım</span></h2>
+    <p class="isub" data-reveal>Markanız için doğru dijital stratejiyi birlikte belirleyelim. Instagram üzerinden bize ulaşın, ücretsiz danışmanlık için DM atın.</p>
+    <a href="https://www.instagram.com/noktasosyalmedya/" target="_blank" rel="noopener noreferrer" class="btn btn-lg" data-reveal>
+      <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      Instagram'dan Ulaşın
+    </a>
+    <p class="ihandle" data-reveal>@noktasosyalmedya</p>
+  </div>
+</section>
+```
 
   </main>
 
   <!-- FOOTER -->
+
   <footer>
-    <div class="footer-inner">
-      <a href="#" class="logo footer-logo">NOKTA<span class="dot">.</span></a>
-      <p class="footer-tagline">Dijital dünyada noktayı koyanlar.</p>
+    <div class="fi">
+      <a href="#" aria-label="Nokta Sosyal Medya">
+        <img src="nokta-sosyal-medya.png" alt="Nokta Sosyal Medya" class="flogo" />
+      </a>
+      <p class="ftag">Dijital dünyada noktayı koyanlar.</p>
       <nav aria-label="Footer navigasyon">
-        <ul class="footer-links" role="list">
+        <ul class="flinks" role="list">
           <li><a href="#hizmetler">Hizmetler</a></li>
           <li><a href="#avantajlar">Avantajlar</a></li>
           <li><a href="#portfolyo">Portföy</a></li>
           <li><a href="https://www.instagram.com/noktasosyalmedya/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
         </ul>
       </nav>
-      <p class="footer-copy">&copy; 2025 Nokta Sosyal Medya. Tüm hakları saklıdır.</p>
+      <p class="fcopy">&copy; 2025 Nokta Sosyal Medya. Tüm hakları saklıdır.</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+  (function(){
+    'use strict';
+
+    /* Navbar scroll */
+    var nav = document.getElementById('nav');
+    function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 40); }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    /* Mobile menu */
+    var burger = document.querySelector('.burger');
+    var mob = document.querySelector('.mob');
+    if(burger && mob){
+      burger.addEventListener('click', function(){
+        var o = mob.classList.toggle('open');
+        burger.classList.toggle('open', o);
+        burger.setAttribute('aria-expanded', String(o));
+        mob.setAttribute('aria-hidden', String(!o));
+      });
+      mob.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){
+          mob.classList.remove('open');
+          burger.classList.remove('open');
+          burger.setAttribute('aria-expanded','false');
+          mob.setAttribute('aria-hidden','true');
+        });
+      });
+    }
+
+    /* Scroll reveal */
+    var els = document.querySelectorAll('[data-reveal]');
+    if('IntersectionObserver' in window){
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); }
+        });
+      },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+      els.forEach(function(el){
+        var sib = el.parentElement ? Array.from(el.parentElement.querySelectorAll('[data-reveal]')) : [];
+        var i = sib.indexOf(el);
+        if(i>0) el.style.transitionDelay = (i*.1)+'s';
+        obs.observe(el);
+      });
+    } else { els.forEach(function(el){ el.classList.add('on'); }); }
+
+    /* Smooth scroll */
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var t = document.querySelector(this.getAttribute('href'));
+        if(!t) return;
+        e.preventDefault();
+        window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - 80, behavior:'smooth'});
+      });
+    });
+
+    /* Active nav */
+    var secs = document.querySelectorAll('section[id]');
+    var nls = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', function(){
+      var sy = window.scrollY + 120;
+      secs.forEach(function(s){
+        if(sy >= s.offsetTop && sy < s.offsetTop + s.offsetHeight){
+          nls.forEach(function(l){ l.style.color = l.getAttribute('href')==='#'+s.id ? '#00d4ff' : ''; });
+        }
+      });
+    }, {passive:true});
+
+    /* Portfolio tilt */
+    document.querySelectorAll('.pimg').forEach(function(c){
+      c.addEventListener('mousemove', function(e){
+        var r = c.getBoundingClientRect();
+        var x = ((e.clientX-r.left)/r.width-.5)*8;
+        var y = ((e.clientY-r.top)/r.height-.5)*-8;
+        c.style.transform = 'perspective(600px) rotateX('+y+'deg) rotateY('+x+'deg) scale(1.02)';
+      });
+      c.addEventListener('mouseleave', function(){ c.style.transform=''; });
+    });
+
+    /* Stats counter */
+    function counter(el){
+      var m = el.textContent.trim().match(/^(\d+)/);
+      if(!m) return;
+      var target = parseInt(m[1],10), suffix = el.textContent.trim().replace(m[1],''), cur = 0;
+      var step = Math.ceil(target/(1200/16));
+      var t = setInterval(function(){
+        cur = Math.min(cur+step, target);
+        el.textContent = cur+suffix;
+        if(cur>=target) clearInterval(t);
+      },16);
+    }
+    if('IntersectionObserver' in window){
+      var so = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ counter(e.target); so.unobserve(e.target); } });
+      },{threshold:.5});
+      document.querySelectorAll('.stat strong').forEach(function(s){ so.observe(s); });
+    }
+  })();
+  </script>
+
 </body>
 </html>
