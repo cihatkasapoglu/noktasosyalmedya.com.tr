@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta -->
+  <title>Nokta Sosyal Medya | Dijital Pazarlama & Sosyal Medya Yönetimi</title>
+  <meta name="description" content="Nokta Sosyal Medya, markanızı dijital dünyada büyütmek için sosyal medya yönetimi, içerik üretimi, reklam yönetimi ve SEO hizmetleri sunar. Bizi arayın: 0553 738 38 06" />
+  <meta name="keywords" content="sosyal medya yönetimi, dijital pazarlama, Instagram yönetimi, Facebook reklamları, içerik üretimi, SEO, Nokta Sosyal Medya" />
+  <meta name="author" content="Nokta Sosyal Medya" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nokta Sosyal Medya | Dijital Pazarlama & Sosyal Medya Yönetimi" />
+  <meta property="og:description" content="Markanızı dijital dünyada büyütüyoruz. Sosyal medya yönetimi, içerik üretimi ve reklam hizmetleri." />
+  <meta property="og:url" content="https://noktasosyalmedya.com" />
+  <meta property="og:site_name" content="Nokta Sosyal Medya" />
+  <meta property="og:locale" content="tr_TR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nokta Sosyal Medya | Dijital Pazarlama" />
+  <meta name="twitter:description" content="Markanızı dijital dünyada büyütüyoruz." />
+  <meta name="twitter:site" content="@noktasosyalmedya" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Nokta Sosyal Medya",
+    "url": "https://noktasosyalmedya.com",
+    "telephone": "+905537383806",
+    "description": "Dijital pazarlama ve sosyal medya yönetimi hizmetleri",
+    "sameAs": ["https://www.instagram.com/noktasosyalmedya"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+905537383806",
+      "contactType": "customer service",
+      "availableLanguage": "Turkish"
+    }
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#E8000D',
+              darkred: '#b5000a',
+              black: '#0A0A0A',
+              gray: '#1a1a1a',
+              lightgray: '#f7f7f7',
+            }
+          },
+          fontFamily: {
+            display: ['Bebas Neue', 'sans-serif'],
+            body: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background: #ffffff; color: #0A0A0A; overflow-x: hidden; }
+
+    /* NAVBAR */
+    #navbar { transition: all 0.3s ease; }
+    #navbar.scrolled { background: rgba(255,255,255,0.97) !important; box-shadow: 0 2px 30px rgba(0,0,0,0.08); }
+    #navbar.scrolled .nav-link { color: #4b5563 !important; }
+    #navbar.scrolled .nav-logo-text { color: #0A0A0A !important; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      background: #0A0A0A;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(232,0,13,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(232,0,13,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-glow {
+      position: absolute; width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,0,13,0.15) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp   { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn   { from { opacity:0; } to { opacity:1; } }
+    @keyframes slideR   { from { opacity:0; transform:translateX(-30px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes pulseRing { 0% { transform:scale(1); opacity:.8; } 100% { transform:scale(1.6); opacity:0; } }
+    @keyframes float    { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+
+    .anim-fu  { animation: fadeUp  0.8s ease both; opacity:0; }
+    .anim-fi  { animation: fadeIn  1.0s ease both; opacity:0; }
+    .anim-sr  { animation: slideR  0.7s ease both; opacity:0; }
+    .d1 { animation-delay:0.1s; } .d2 { animation-delay:0.25s; }
+    .d3 { animation-delay:0.4s; } .d4 { animation-delay:0.55s; }
+    .d5 { animation-delay:0.75s; } .d6 { animation-delay:1.0s; }
+
+    /* BUTTONS */
+    .btn-red {
+      display:inline-flex; align-items:center; gap:10px;
+      background:#E8000D; color:#fff; padding:15px 36px; border-radius:6px;
+      font-weight:700; font-size:1rem; letter-spacing:.02em;
+      text-decoration:none; transition:all .3s ease; position:relative; overflow:hidden;
+    }
+    .btn-red::after { content:''; position:absolute; inset:0; background:rgba(255,255,255,.15); transform:translateX(-101%); transition:transform .3s ease; }
+    .btn-red:hover { background:#b5000a; transform:translateY(-2px); box-shadow:0 12px 30px rgba(232,0,13,.35); }
+    .btn-red:hover::after { transform:translateX(0); }
+
+    .btn-ghost {
+      display:inline-flex; align-items:center; gap:10px;
+      border:2px solid rgba(255,255,255,.25); color:#fff; padding:13px 32px; border-radius:6px;
+      font-weight:600; font-size:1rem; text-decoration:none; transition:all .3s ease;
+    }
+    .btn-ghost:hover { border-color:#E8000D; background:rgba(232,0,13,.1); }
+
+    /* SECTION */
+    .red-bar { display:inline-block; width:44px; height:4px; background:#E8000D; border-radius:2px; margin-bottom:14px; }
+    .sec-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(2.2rem,5vw,3.5rem); line-height:1; letter-spacing:.02em; }
+
+    /* SERVICE CARDS */
+    .scard { border:1px solid #ebebeb; border-radius:18px; padding:36px 28px; background:#fff; transition:all .35s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
+    .scard::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:#E8000D; transform:scaleX(0); transform-origin:left; transition:transform .35s ease; }
+    .scard:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(232,0,13,.1); border-color:#E8000D; }
+    .scard:hover::after { transform:scaleX(1); }
+    .scard:hover .sicon { background:#E8000D !important; color:#fff !important; transform:scale(1.1) rotate(-5deg); }
+    .sicon { width:56px; height:56px; border-radius:14px; background:rgba(232,0,13,.08); display:flex; align-items:center; justify-content:center; color:#E8000D; margin-bottom:22px; transition:all .35s ease; }
+
+    /* SWIPER */
+    .ref-swiper .swiper-pagination-bullet { background:#0A0A0A; opacity:.2; width:8px; height:8px; }
+    .ref-swiper .swiper-pagination-bullet-active { background:#E8000D; opacity:1; width:24px; border-radius:4px; }
+    .ref-card { background:#fff; border:1px solid #ebebeb; border-radius:16px; padding:36px 28px; display:flex; align-items:center; justify-content:center; min-height:140px; transition:all .3s ease; }
+    .ref-card:hover { box-shadow:0 10px 40px rgba(232,0,13,.08); border-color:#E8000D; transform:scale(1.03); }
+    .ref-card img { max-height:68px; width:auto; max-width:170px; object-fit:contain; filter:grayscale(100%); opacity:.55; transition:all .3s ease; }
+    .ref-card:hover img { filter:grayscale(0%); opacity:1; }
+
+    /* STATS */
+    .stat-box { border-left:3px solid #E8000D; padding-left:20px; }
+
+    /* INSTAGRAM */
+    .ig-grad { background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
+    .ig-wrap { padding:3px; border-radius:20px; display:inline-block; }
+    .ig-inner { background:#fff; border-radius:18px; padding:48px 40px; display:flex; flex-direction:column; align-items:center; gap:20px; }
+    .ig-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; width:100%; max-width:320px; }
+    .ig-cell { aspect-ratio:1; background:#f5f5f5; border-radius:6px; overflow:hidden; position:relative; }
+    .ig-cell::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(240,148,51,.15),rgba(188,24,136,.15)); }
+
+    /* FLOATING PHONE */
+    .float-phone { position:fixed; bottom:28px; right:28px; z-index:1000; }
+    .float-phone a { display:flex; align-items:center; gap:12px; background:#25D366; color:#fff; padding:14px 24px; border-radius:50px; font-weight:700; font-size:.9rem; text-decoration:none; box-shadow:0 8px 30px rgba(37,211,102,.4); transition:all .3s ease; white-space:nowrap; }
+    .float-phone a:hover { background:#1ebe5d; transform:scale(1.04); }
+    .float-ring { position:absolute; inset:-6px; border-radius:50px; border:2px solid rgba(37,211,102,.4); animation:pulseRing 2s ease-out infinite; pointer-events:none; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.vis { opacity:1; transform:translateY(0); }
+
+    /* MOBILE MENU */
+    #mob-menu { display:none; }
+    #mob-menu.open { display:block; }
+
+    /* FOOTER */
+    footer a { text-decoration:none; }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;height:72px;">
+
+      <!-- Logo -->
+      <a href="#hero" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+        <img
+          src="nokta-sosyal-medya.png"
+          alt="Nokta Sosyal Medya"
+          loading="eager"
+          style="height:40px;width:auto;object-fit:contain;display:block;"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+        />
+        <div style="display:none;align-items:center;gap:8px;">
+          <div style="width:38px;height:38px;background:#E8000D;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+            <span style="color:#fff;font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;">N</span>
+          </div>
+          <span class="nav-logo-text" style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#fff;letter-spacing:2px;">NOKTA</span>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <div style="display:flex;align-items:center;gap:32px;" class="hidden-mobile">
+        <a href="#hizmetler" class="nav-link" style="color:#d1d5db;font-size:.875rem;font-weight:500;text-decoration:none;letter-spacing:.04em;transition:color .2s;">Hizmetler</a>
+        <a href="#referanslar" class="nav-link" style="color:#d1d5db;font-size:.875rem;font-weight:500;text-decoration:none;letter-spacing:.04em;transition:color .2s;">Referanslar</a>
+        <a href="#hakkimizda" class="nav-link" style="color:#d1d5db;font-size:.875rem;font-weight:500;text-decoration:none;letter-spacing:.04em;transition:color .2s;">Hakkımızda</a>
+        <a href="#instagram" class="nav-link" style="color:#d1d5db;font-size:.875rem;font-weight:500;text-decoration:none;letter-spacing:.04em;transition:color .2s;">Instagram</a>
+        <a href="https://wa.me/905537383806" target="_blank" rel="noopener" class="btn-red" style="padding:10px 22px;font-size:.875rem;background:#25D366;border-color:#25D366;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg>
+          WhatsApp
+        </a>
+      </div>
+
+      <!-- Hamburger -->
+      <button id="ham-btn" style="display:none;background:none;border:none;cursor:pointer;padding:8px;" aria-label="Menü">
+        <svg id="ham-ico" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mob-menu" style="background:#0A0A0A;border-top:1px solid rgba(255,255,255,.08);">
+    <div style="padding:20px 32px;display:flex;flex-direction:column;gap:16px;">
+      <a href="#hizmetler" class="mob-link" style="color:#d1d5db;font-size:.9rem;font-weight:500;text-decoration:none;">Hizmetler</a>
+      <a href="#referanslar" class="mob-link" style="color:#d1d5db;font-size:.9rem;font-weight:500;text-decoration:none;">Referanslar</a>
+      <a href="#hakkimizda" class="mob-link" style="color:#d1d5db;font-size:.9rem;font-weight:500;text-decoration:none;">Hakkımızda</a>
+      <a href="#instagram" class="mob-link" style="color:#d1d5db;font-size:.9rem;font-weight:500;text-decoration:none;">Instagram</a>
+      <a href="https://wa.me/905537383806" target="_blank" rel="noopener" class="btn-red" style="text-align:center;justify-content:center;background:#25D366;border-color:#25D366;">WhatsApp ile Yaz</a>
+    </div>
+  </div>
+</nav>
+
+<!-- responsive helper -->
+<style>
+  @media(max-width:768px){
+    .hidden-mobile { display:none !important; }
+    #ham-btn { display:block !important; }
+    #ham-btn svg { stroke: white; }
+    #navbar.scrolled #ham-btn svg { stroke: #0A0A0A; }
+  }
+</style>
+
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;width:100%;position:relative;z-index:10;padding-top:96px;padding-bottom:80px;">
+    <div style="display:grid;grid-template-columns:1fr;gap:60px;align-items:center;">
+
+      <!-- Text -->
+      <div style="max-width:700px;">
+        <div class="anim-sr d1" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:8px 18px;margin-bottom:28px;">
+          <span style="width:8px;height:8px;background:#E8000D;border-radius:50%;display:inline-block;animation:pulseRing 1.5s ease-out infinite;"></span>
+          <span style="color:#9ca3af;font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;">Dijital Pazarlama Ajansı</span>
+        </div>
+
+        <h1 class="anim-fu d2" style="font-family:'Bebas Neue',sans-serif;color:#fff;line-height:1;margin-bottom:24px;font-size:clamp(3rem,8vw,6.5rem);">
+          DİJİTAL<br/>
+          <span style="color:#E8000D;">DÜNYADA</span><br/>
+          NOKTA KOYUN
+        </h1>
+
+        <p class="anim-fu d3" style="color:#9ca3af;font-size:1.1rem;line-height:1.75;margin-bottom:40px;max-width:520px;">
+          Markanızı sosyal medyada büyütmek, reklam bütçenizi doğru yönetmek ve hedef kitlenize ulaşmak için doğru adrestesiniz.
+        </p>
+
+        <div class="anim-fu d4" style="display:flex;flex-wrap:wrap;gap:16px;">
+          <a href="https://wa.me/905537383806" target="_blank" rel="noopener" class="btn-red" style="background:#25D366;border-color:#25D366;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg>
+            WhatsApp ile Yaz
+          </a>
+          <a href="#hizmetler" class="btn-ghost">Hizmetleri Keşfet</a>
+        </div>
+
+        <!-- Mini stats -->
+        <div class="anim-fi d5" style="display:flex;gap:40px;margin-top:56px;padding-top:40px;border-top:1px solid rgba(255,255,255,.08);">
+          <div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:#E8000D;line-height:1;">150+</div>
+            <div style="color:#6b7280;font-size:.8rem;margin-top:2px;">Mutlu Müşteri</div>
+          </div>
+          <div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:#E8000D;line-height:1;">5+</div>
+            <div style="color:#6b7280;font-size:.8rem;margin-top:2px;">Yıl Deneyim</div>
+          </div>
+          <div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:#E8000D;line-height:1;">%340</div>
+            <div style="color:#6b7280;font-size:.8rem;margin-top:2px;">Ort. Büyüme</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ HİZMETLER ═══ -->
+<section id="hizmetler" style="padding:112px 0;background:#fff;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;">
+
+    <div class="reveal" style="text-align:center;margin-bottom:72px;">
+      <div class="red-bar" style="display:block;margin:0 auto 14px;"></div>
+      <h2 class="sec-title">HİZMETLERİMİZ</h2>
+      <p style="color:#6b7280;margin-top:12px;max-width:480px;margin-left:auto;margin-right:auto;">Markanızın dijital büyümesi için ihtiyacınız olan her şey tek çatı altında.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;">
+
+      <div class="scard reveal">
+        <div class="sicon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg>
+        </div>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;margin-bottom:12px;">SOSYAL MEDYA YÖNETİMİ</h3>
+        <p style="color:#6b7280;font-size:.875rem;line-height:1.7;">Instagram, Facebook ve TikTok hesaplarınızı profesyonelce yöneterek organik büyüme sağlıyoruz. Düzenli içerik takvimi ve etkileşim stratejisi ile markanızı öne taşıyoruz.</p>
+      </div>
+
+      <div class="scard reveal" style="transition-delay:.1s">
+        <div class="sicon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16"><path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/><path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/></svg>
+        </div>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;margin-bottom:12px;">İÇERİK ÜRETİMİ</h3>
+        <p style="color:#6b7280;font-size:.875rem;line-height:1.7;">Markanıza özel fotoğraf, video ve grafik tasarım hizmetleri. Scroll-stopping içerikler üretiyor, markanızı rakiplerinizden öne çıkarıyoruz.</p>
+      </div>
+
+      <div class="scard reveal" style="transition-delay:.2s">
+        <div class="sicon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16"><path d="M0 0h1v15h15v1H0zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07"/></svg>
+        </div>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;margin-bottom:12px;">REKLAM YÖNETİMİ</h3>
+        <p style="color:#6b7280;font-size:.875rem;line-height:1.7;">Meta Ads ve Google Ads kampanyalarını ROI odaklı yönetiyoruz. A/B testler, hedefleme optimizasyonu ve bütçe verimliliği ile maksimum geri dönüş sağlıyoruz.</p>
+      </div>
+
+      <div class="scard reveal" style="transition-delay:.3s">
+        <div class="sicon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4M3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707M2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10m9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5m.754-4.246a.39.39 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.39.39 0 0 0-.029-.518z"/><path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A8 8 0 0 1 0 10m8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3"/></svg>
+        </div>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;margin-bottom:12px;">SEO & BÜYÜME</h3>
+        <p style="color:#6b7280;font-size:.875rem;line-height:1.7;">Arama motorlarında üst sıralara çıkmanız için teknik SEO, içerik optimizasyonu ve link building stratejileri uyguluyoruz. Organik trafiğinizi katlıyoruz.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ STATS ═══ -->
+<section style="padding:64px 0;background:#0A0A0A;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px;">
+      <div class="stat-box reveal"><div style="font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:#E8000D;line-height:1;">150+</div><div style="color:#6b7280;font-size:.875rem;margin-top:4px;">Mutlu Müşteri</div></div>
+      <div class="stat-box reveal" style="transition-delay:.1s"><div style="font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:#E8000D;line-height:1;">5+</div><div style="color:#6b7280;font-size:.875rem;margin-top:4px;">Yıl Deneyim</div></div>
+      <div class="stat-box reveal" style="transition-delay:.2s"><div style="font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:#E8000D;line-height:1;">%340</div><div style="color:#6b7280;font-size:.875rem;margin-top:4px;">Ort. Büyüme</div></div>
+      <div class="stat-box reveal" style="transition-delay:.3s"><div style="font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:#E8000D;line-height:1;">24/7</div><div style="color:#6b7280;font-size:.875rem;margin-top:4px;">Destek</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ REFERANSLAR ═══ -->
+<section id="referanslar" style="padding:112px 0;background:#fff;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;">
+
+    <div class="reveal" style="text-align:center;margin-bottom:72px;">
+      <div class="red-bar" style="display:block;margin:0 auto 14px;"></div>
+      <h2 class="sec-title">REFERANSLARIMIZ</h2>
+      <p style="color:#6b7280;margin-top:12px;max-width:480px;margin-left:auto;margin-right:auto;">Bize güvenen ve birlikte büyüdüğümüz markalar.</p>
+    </div>
+
+    <div class="swiper ref-swiper reveal" style="padding-bottom:48px;">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><div class="ref-card"><img src="cihathyundai.png" alt="Cihat Hyundai – Otomotiv Markası" loading="lazy" /></div></div>
+        <div class="swiper-slide"><div class="ref-card"><img src="yedekparcajet.png" alt="Yedek Parça Jet – Otomotiv Yedek Parça" loading="lazy" /></div></div>
+        <div class="swiper-slide"><div class="ref-card"><img src="yildizkurs.png" alt="Yıldız Kurs – Eğitim Kurumu" loading="lazy" /></div></div>
+        <div class="swiper-slide"><div class="ref-card"><img src="kgs2028.png" alt="KGS 2028" loading="lazy" /></div></div>
+        <div class="swiper-slide"><div class="ref-card"><img src="cihathyundai.png" alt="Cihat Hyundai" loading="lazy" /></div></div>
+        <div class="swiper-slide"><div class="ref-card"><img src="yedekparcajet.png" alt="Yedek Parça Jet" loading="lazy" /></div></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ HAKKIMIZDA ═══ -->
+<section id="hakkimizda" style="padding:112px 0;background:#f7f7f7;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;" class="about-grid">
+
+      <div class="reveal">
+        <div class="red-bar"></div>
+        <h2 class="sec-title" style="margin-bottom:24px;">HAKKIMIZDA</h2>
+        <p style="color:#4b5563;line-height:1.8;margin-bottom:16px;">Nokta Sosyal Medya, markaların dijital dünyadaki varlığını güçlendirmek amacıyla kurulmuş bir dijital pazarlama ajansıdır. 5 yılı aşkın sektör deneyimimizle 150'den fazla markaya hizmet verdik.</p>
+        <p style="color:#4b5563;line-height:1.8;margin-bottom:40px;">Sosyal medya yönetiminden reklam stratejilerine, içerik üretiminden SEO'ya kadar geniş bir yelpazede sunduğumuz hizmetlerle markanızın hedef kitlesine ulaşmasını sağlıyoruz.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div style="background:#fff;border:1px solid #ebebeb;border-radius:14px;padding:24px;">
+            <div style="color:#E8000D;margin-bottom:10px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/></svg>
+            </div>
+            <h4 style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.04em;margin-bottom:6px;">MİSYONUMUZ</h4>
+            <p style="color:#6b7280;font-size:.8rem;line-height:1.6;">Her markanın dijital potansiyelini en üst seviyeye çıkarmak.</p>
+          </div>
+          <div style="background:#fff;border:1px solid #ebebeb;border-radius:14px;padding:24px;">
+            <div style="color:#E8000D;margin-bottom:10px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/><path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/></svg>
+            </div>
+            <h4 style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.04em;margin-bottom:6px;">VİZYONUMUZ</h4>
+            <p style="color:#6b7280;font-size:.8rem;line-height:1.6;">Türkiye'nin en güvenilen dijital ajanslarından biri olmak.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right panel -->
+      <div class="reveal" style="transition-delay:.2s;">
+        <div style="background:#0A0A0A;border-radius:20px;padding:48px 40px;color:#fff;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:4rem;color:#E8000D;line-height:1;margin-bottom:6px;">5+</div>
+          <div style="color:#9ca3af;font-size:.875rem;margin-bottom:36px;">Yıllık Sektör Deneyimi</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px;">
+            <div style="display:flex;align-items:center;gap:12px;"><div style="width:8px;height:8px;background:#E8000D;border-radius:50%;flex-shrink:0;"></div><span style="color:#d1d5db;font-size:.9rem;">Uzman İçerik ve Strateji Ekibi</span></div>
+            <div style="display:flex;align-items:center;gap:12px;"><div style="width:8px;height:8px;background:#E8000D;border-radius:50%;flex-shrink:0;"></div><span style="color:#d1d5db;font-size:.9rem;">Veriye Dayalı Karar Alma</span></div>
+            <div style="display:flex;align-items:center;gap:12px;"><div style="width:8px;height:8px;background:#E8000D;border-radius:50%;flex-shrink:0;"></div><span style="color:#d1d5db;font-size:.9rem;">Aylık Şeffaf Raporlama</span></div>
+            <div style="display:flex;align-items:center;gap:12px;"><div style="width:8px;height:8px;background:#E8000D;border-radius:50%;flex-shrink:0;"></div><span style="color:#d1d5db;font-size:.9rem;">Ölçülebilir ve Sürdürülebilir Büyüme</span></div>
+          </div>
+          <a href="tel:05537383806" class="btn-red" style="width:100%;justify-content:center;">Ücretsiz Danışmanlık Al</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @media(max-width:768px){
+    .about-grid { grid-template-columns:1fr !important; gap:40px !important; }
+  }
+</style>
+
+
+<!-- ═══ INSTAGRAM ═══ -->
+<section id="instagram" style="padding:112px 0;background:#fff;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:flex;flex-direction:column;align-items:center;">
+
+    <div class="reveal" style="text-align:center;margin-bottom:56px;">
+      <div class="red-bar" style="display:block;margin:0 auto 14px;"></div>
+      <h2 class="sec-title">BİZİ TAKİP EDİN</h2>
+      <p style="color:#6b7280;margin-top:12px;">Instagram'da güncel içeriklerimizi ve müşteri başarı hikayelerimizi kaçırmayın.</p>
+    </div>
+
+    <div class="ig-wrap ig-grad reveal" style="max-width:420px;width:100%;">
+      <div class="ig-inner">
+        <div class="ig-grad" style="width:80px;height:80px;border-radius:20px;display:flex;align-items:center;justify-content:center;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="white" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.06em;color:#0A0A0A;">@noktasosyalmedya</div>
+          <div style="color:#9ca3af;font-size:.8rem;margin-top:4px;">Instagram'da bizi takip edin</div>
+        </div>
+        <div class="ig-grid">
+          <div class="ig-cell"></div><div class="ig-cell"></div><div class="ig-cell"></div>
+          <div class="ig-cell"></div><div class="ig-cell"></div><div class="ig-cell"></div>
+        </div>
+        <a href="https://instagram.com/noktasosyalmedya" target="_blank" rel="noopener noreferrer"
+           class="ig-grad" style="display:inline-block;color:#fff;font-weight:700;font-size:.875rem;padding:12px 32px;border-radius:50px;text-decoration:none;letter-spacing:.02em;">
+          Profili Ziyaret Et →
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer style="background:#0A0A0A;padding:72px 0 32px;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;">
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:48px;margin-bottom:56px;" class="footer-grid">
+
+      <div>
+        <div style="margin-bottom:16px;">
+          <img
+            src="nokta-sosyal-medya.png"
+            alt="Nokta Sosyal Medya"
+            loading="lazy"
+            style="height:44px;width:auto;object-fit:contain;display:block;"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+          />
+          <div style="display:none;align-items:center;gap:10px;">
+            <div style="width:38px;height:38px;background:#E8000D;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+              <span style="color:#fff;font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;">N</span>
+            </div>
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;letter-spacing:2px;">NOKTA</span>
+          </div>
+        </div>
+        <p style="color:#6b7280;font-size:.875rem;line-height:1.7;">Markanızı dijital dünyada büyütmek için buradayız. Profesyonel ekibimizle fark yaratıyoruz.</p>
+      </div>
+
+      <div>
+        <h4 style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:#fff;letter-spacing:.08em;margin-bottom:20px;">HIZLI ERİŞİM</h4>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="#hizmetler" style="color:#6b7280;font-size:.875rem;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#E8000D'" onmouseout="this.style.color='#6b7280'">Hizmetlerimiz</a>
+          <a href="#referanslar" style="color:#6b7280;font-size:.875rem;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#E8000D'" onmouseout="this.style.color='#6b7280'">Referanslarımız</a>
+          <a href="#hakkimizda" style="color:#6b7280;font-size:.875rem;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#E8000D'" onmouseout="this.style.color='#6b7280'">Hakkımızda</a>
+          <a href="#instagram" style="color:#6b7280;font-size:.875rem;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#E8000D'" onmouseout="this.style.color='#6b7280'">Instagram</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:#fff;letter-spacing:.08em;margin-bottom:20px;">İLETİŞİM</h4>
+        <a href="https://wa.me/905537383806" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;text-decoration:none;margin-bottom:16px;">
+          <div style="width:36px;height:36px;background:rgba(37,211,102,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#25D366" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg>
+          </div>
+          <span style="color:#25D366;font-weight:700;font-size:1rem;">WhatsApp: 0553 738 38 06</span>
+        </a>
+        <a href="https://instagram.com/noktasosyalmedya" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+          <div style="width:36px;height:36px;background:rgba(255,255,255,.05);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#6b7280" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg>
+          </div>
+          <span style="color:#6b7280;font-size:.875rem;">@noktasosyalmedya</span>
+        </a>
+      </div>
+
+    </div>
+
+    <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:28px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
+      <p style="color:#4b5563;font-size:.8rem;">© 2024 Nokta Sosyal Medya. Tüm hakları saklıdır.</p>
+      <p style="color:#374151;font-size:.75rem;">Dijital dünyada fark yaratıyoruz.</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══ FLOATING WHATSAPP ═══ -->
+<div class="float-phone" style="background:#25D366;">
+  <div class="float-ring" style="border-color:#25D366;"></div>
+  <a href="https://wa.me/905537383806" target="_blank" rel="noopener">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg>
+    <span>WhatsApp</span>
+  </a>
+</div>
+
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  // Swiper
+  new Swiper('.ref-swiper', {
+    slidesPerView: 1, spaceBetween: 20, loop: true,
+    autoplay: { delay: 2500, disableOnInteraction: false },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    breakpoints: { 480:{slidesPerView:2}, 768:{slidesPerView:3}, 1024:{slidesPerView:4} }
+  });
+
+  // Navbar scroll effect
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Hamburger
+  document.getElementById('ham-btn').addEventListener('click', () => {
+    document.getElementById('mob-menu').classList.toggle('open');
+  });
+  document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => {
+    document.getElementById('mob-menu').classList.remove('open');
+  }));
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
